@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}" />
+
+    {% block stylesheets %}
+    {% endblock %}
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href={{ path('home') }}>ACCUEIL</a>
+        </div>
+        <ul class="nav navbar-nav">
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin') }}">Admin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('user_index') }}">User</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('host_table_index') }}">Table</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('meal_index') }}">Meal</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('reservation_index') }}">Réservation</a>
+            </li>
+            {% endif %}
+
+            {% if app.user %}
+            <li class="nav-item">
+                <a href="{{ path('logout_route') }}" class="nav-link">Se déconnecter</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('user_detail')}}" class="nav-link">Espace user</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a href="{{ path('app_login') }}" class="nav-link">Se Connecter</a>
+            </li>
+            <li>
+                <a href="{{ path('user_new') }}" class="nav-link">S'inscrire</a>
+            </li>
+        </ul>
+            {% endif %}
+    </div>
+</nav>
+
+
+<h1>
+    {% for category, messages in app.flashes %}
+        {% for message in messages %}
+            <p class="flash--{{ category }}">{{ message }}</p>
+        {% endfor %}
+    {% endfor %}
+</h1>
+
+{% block body %}{% endblock %}
+
+    <footer>
+            <div class="container">
+                    <div class="justify-content">
+                        <a class="link" href="/source/contact.html">Contact</a>
+                        <a class="link" href="#">Equipe</a>
+                        <a class="link" href="#">Service</a>
+                            <img src="{{ asset('images/facebook.jpg') }}" alt="logo" height="30px">
+                    </div>
+            </div>
+    </footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

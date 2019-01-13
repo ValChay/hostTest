@@ -1,0 +1,26 @@
+/*Container du formulaire*/
+.input_container {
+
+    font-family: Poppins-Medium, serif;
+    margin-top: 100px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #858585;
+    width: 25%;
+    padding: 30px;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: #e7e7e7;
+    background: -webkit-linear-gradient(45deg, #c6c6c6, #e7e7e7);
+    background: -o-linear-gradient(45deg,  #c6c6c6, #e7e7e7);
+    background: -moz-linear-gradient(45deg,  #c6c6c6, #e7e7e7);
+    background: linear-gradient(45deg,  #c6c6c6, #e7e7e7);
+}
+
+/*input et label*/
+.input_container input {
+
+    margin: 10px 0;
+}

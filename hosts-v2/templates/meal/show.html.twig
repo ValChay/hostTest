@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meal{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/tableDetail.css') }}">
+{% endblock %}
+
+{% block body %}
+    {#<h1>Meal</h1>#}
+
+    {#<table class="table">#}
+        {#<tbody>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ meal.id }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Date</th>#}
+                {#<td>{{ meal.date ? meal.date|date('Y-m-d H:i:s') : '' }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Price</th>#}
+                {#<td>{{ meal.price }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Capacity</th>#}
+                {#<td>{{ meal.capacity }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>RemainingCapacity</th>#}
+                {#<td>{{ meal.remainingCapacity }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Menu</th>#}
+                {#<td>{{ meal.menu }}</td>#}
+            {#</tr>#}
+        {#</tbody>#}
+    {#</table>#}
+
+    <div class="container detail-table">
+        <div class="card">
+            <h1 class="text-center card-header" id="tableName">{{ meal.name }}</h1>
+            <div class="row card-body">
+                <img src="{{ asset('uploads/table_images/' ~ meal.hostTable.image ) }}" class="col-md-4">
+                <div class="col-md-8">
+                    <h2 id="title">Lieu : {{ meal.hostTable.name }}</h2>
+                    <h3>Description du lieu : </h3>
+                    <p>{{ meal.hostTable.description }}</p>
+                    <h5>Menu :</h5>
+                    <p>{{ meal.menu }}</p>
+                    <h5>Date</h5>
+                    <p>Le {{ meal.date | date ("m/d/Y")}} à {{ meal.date | date ("H")}}h</p>
+                    <h5>Prix</h5>
+                    <p>{{ meal.price }}</p>
+                    <p>Places total : {{ meal.capacity }} / Places restantes : {{ meal.remainingCapacity }}</p>
+                </div>
+                <div class="card-footer">
+                    {{ form_start(form_resa) }}
+                    {{ form_widget(form_resa) }}
+                    <button class="btn-primary" type="submit">Reserver</button>
+                    {{ form_end(form_resa) }}
+                </div>
+            </div>
+            <div class="backgroundmap">
+                <h4>Localisez votre table !</h4>
+                <div class="map">
+                    <iframe src="https://maps.google.it/maps?q={{ meal.hostTable.address }} {{ meal.hostTable.zipCode }} {{ meal.hostTable.town }}&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    {#<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d679.4716070806087!2d-0.8763230434664657!3d47.06207816737371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480646a381559aeb%3A0xea21c3e33efa19fc!2sCholet!5e0!3m2!1sen!2sfr!4v1543920043350" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>#}
+                </div>
+            </div>
+            <a href="{{ path('host_table_index') }}"><button>back to list</button></a>
+            {% if is_granted('ROLE_ADMIN') %}
+
+                <a href="{{ path('host_table_edit', {'id': meal.hostTable.id}) }}"><button>edit</button></a>
+
+                {#{{ include('host_table/_delete_form.html.twig') }}#}
+            {% endif %}
+        </div>
+
+    </div>
+
+    <a href="{{ path('meal_index') }}">back to list</a>
+
+    <a href="{{ path('meal_edit', {'id': meal.id}) }}">edit</a>
+
+    {{ include('meal/_delete_form.html.twig') }}
+{% endblock %}

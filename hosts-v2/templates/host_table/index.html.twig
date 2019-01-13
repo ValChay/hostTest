@@ -1,0 +1,51 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}HostTable index{% endblock %}
+
+{% block body %}
+    <h1>HostTable index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Address2</th>
+                <th>Town</th>
+                <th>ZipCode</th>
+                <th>Description</th>
+                <th>Menu</th>
+                <th>PriceRange</th>
+                <th>Image Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for host_table in host_tables %}
+            <tr>
+                <td>{{ host_table.id }}</td>
+                <td>{{ host_table.name }}</td>
+                <td>{{ host_table.address }}</td>
+                <td>{{ host_table.address2 }}</td>
+                <td>{{ host_table.town }}</td>
+                <td>{{ host_table.zipCode }}</td>
+                <td>{{ host_table.description }}</td>
+                <td>{{ host_table.priceRange }}</td>
+                <td>{{ host_table.image }}</td>
+                <td>
+                    <a href="{{ path('host_table_show', {'id': host_table.id}) }}">show</a>
+                    <a href="{{ path('host_table_edit', {'id': host_table.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('host_table_new') }}">Create new</a>
+{% endblock %}

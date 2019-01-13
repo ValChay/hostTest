@@ -1,0 +1,52 @@
+.detail-table {
+    margin-top: 2em;
+}
+
+.card-footer{
+    margin: 15px;
+}
+
+#tableName{
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 3px grey;
+    font-size: 31px;
+}
+
+#title {
+    color: rgb(53, 52, 52);
+    letter-spacing: 1px;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+#menu{
+    color: rgb(53, 52, 52);
+    letter-spacing: 1px;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+
+/*MAP DETAIL*/
+
+.backgroundmap{
+    background-color:rgba(255, 255, 255, 0.815);
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid rgb(58, 56, 56);
+}
+
+.map{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+h4{
+    display: flex;
+    justify-content: center;
+    color: rgb(53, 52, 52);
+    letter-spacing: 1px;
+}
+

@@ -1,0 +1,38 @@
+h1{
+    text-align: center;
+    padding: 50px;
+    color: rgb(36, 37, 37);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px grey;
+}
+
+
+.table{
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+    width: 350px;
+    border: 2px solid grey;
+    text-align: center;
+}
+
+
+a.bouton {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    width: 9%;
+    border-radius: 5px;
+    background-color: grey;
+    color: white;
+    height: 40px;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    margin: auto;
+}
+
+.marge {
+    margin: 50px;
+}

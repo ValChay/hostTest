@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+    <div class="container col-md-10 mt-5">
+        <h1>Gérer les réservations</h1>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>Nom de la table</th>
+                <th>Email du client</th>
+                <th>Date</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>CP</th>
+                <th>Menu</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody class="table-secondary">
+                <tr>
+                    <td>{{ reservation.meal.hostTable.name }}</td>
+                    <td>{{ reservation.user.username }}</td>
+                    <td>{{ reservation.createdAt| date('d/m/Y ') }}</td>
+                    <td>{{ reservation.meal.hostTable.address }}</td>
+                    <td>{{ reservation.meal.hostTable.town }}</td>
+                    <td>{{ reservation.meal.hostTable.zipCode }}</td>
+                    <td>{{ reservation.meal.menu }}</td>
+                    <td>{{ reservation.meal.price }}</td>
+                    <td>
+                        <a href="{{ path('reservation_edit', {'id': reservation.id}) }}" class="btn btn-primary">edit</a>
+                        {{ include('reservation/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            <tfoot class="text-left">
+
+            </tfoot>
+            <tfoot>
+
+            </tfoot>
+        </table>
+
+    </div>
+
+
+
+{% endblock %}

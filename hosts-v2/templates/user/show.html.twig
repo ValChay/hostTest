@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+
+<h1>Espace User</h1>
+        <div class="container col-md-8 mt-5">
+            <h2 class="text-center">Vos informations personnelles</h2>
+            <table class="table mt-5">
+               <thead class="table-info text-center">
+               <tr>
+                   <th>Email</th>
+                   <th>Telephone</th>
+                   <th>Password</th>
+                   <th>Action</th>
+               </tr>
+               </thead>
+                <tbody class="table-secondary">
+                <tr>
+
+                    <td>{{ user.Email }}</td>
+                    <td>{{ user.Telephone }}</td>
+                    <td>{{ user.Password }}</td>
+                    <td><a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-primary text-center">edit</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="container col-md-8 mt-5">
+            <h2 class="text-center">Liste de vos réservations</h2>
+            <table class="table mt-5">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Création</th>
+                    <th>Nom de la table</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody class="table-secondary">
+                {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.createdAt ? reservation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>{{ reservation.meal.hostTable.name }}</td>
+                        <td>{{ reservation.user.email }}</td>
+                        <td>
+                            <a href="{{ path('reservation_show', {'id': reservation.id}) }}" class="btn btn-info">show</a>
+                            <a href="{{ path('reservation_edit', {'id': reservation.id}) }}" class="btn btn-primary">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% if is_granted('ROLE_HOST') %}
+    <div class="container col-md-8 mt-5">
+        <h2 class="text-center">Liste de vos Table</h2>
+        <table class="table mt-5">
+            <thead class="thead-dark">
+            <tr>
+                <th>Nom de la table</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody class="table-secondary">
+            {% for table in tables %}
+                <tr>
+                    <td>{{ table.name }}</td>
+                    <td>
+                        <a href="{{ path('host_table_show', {'id': table.id}) }}" class="btn btn-info">show</a>
+                        <a href="{{ path('host_table_edit', {'id': table.id}) }}" class="btn btn-primary">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('host_table_new') }}" class="btn btn-primary">Créer une table</a>
+        <a href="{{ path('create_meal') }}" class="btn btn-primary">Créer un meal</a>
+    </div>
+    {% endif %}
+{% endblock %}

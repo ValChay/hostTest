@@ -1,0 +1,2 @@
+logout_route:
+  path: /logout

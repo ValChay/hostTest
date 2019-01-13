@@ -1,0 +1,9 @@
+Instalation du projet :
+
+Après avoir cloner le projet
+
+- composer install
+- php bin/console doctrine:database:create
+- composer require --dev doctrine/doctrine-fixtures-bundle
+- sudo apt install php-libsodium 
+

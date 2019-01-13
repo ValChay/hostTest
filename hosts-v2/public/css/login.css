@@ -1,0 +1,51 @@
+h1{
+    text-align: center;
+    margin: 70px;
+    color: #2d3143;
+}
+
+.form-control{
+    height: 40px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+}
+
+.body{
+    display: flex;
+    background-image: grey;
+    width: 100%;
+}
+
+form{
+    outline: 0;
+    background: linear-gradient(darkgrey, white);
+    width: 30%;
+    margin: 200px 330px 280px 630px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn{
+    margin: auto;
+    text-transform: uppercase;
+    outline: 0;
+    background: dimgrey;
+    color:white;
+    width: 40%;
+    border: 0;
+    padding: 15px;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+

@@ -1,0 +1,44 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reservation.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+<div class="container col-md-10 mt-5">
+    <h1>Liste des réservations</h1>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Création</th>
+            <th>Nom de la table</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody class="table-secondary">
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.createdAt ? reservation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reservation.meal.hostTable.name }}</td>
+                <td>{{ reservation.user.email }}</td>
+                <td>
+                    <a href="{{ path('reservation_show', {'id': reservation.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('reservation_edit', {'id': reservation.id}) }}" class="btn btn-secondary">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('reservation_new') }}" class="btn btn-primary">Create new</a>
+</div>
+{% endblock %}

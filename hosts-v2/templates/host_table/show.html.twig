@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HostTable{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/tableDetail.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container detail-table">
+        <div class="card">
+            <h1 class="text-center card-header" id="tableName">{{ host_table.name }}</h1>
+            <div class="row card-body">
+                <img src="{{ asset('uploads/table_images/' ~ host_table.image ) }}" class="col-md-4">
+                <div class="col-md-8">
+                    <h2 id="title">Description : </h2>
+                    <p>{{ host_table.description }}</p>
+                    <h5>Prix moyen :</h5>
+                    <p>{{ host_table.priceRange }}</p>
+                    <h3>Evenements à venir :</h3>
+                    {% for meal in meals %}
+                        <a href="{{ path('meal_show', {'id': meal.id}) }}"><p>Le {{ meal.date | date ("m/d/Y") }}
+                                à {{ meal.date | date ("H") }}h</p></a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="backgroundmap">
+                <h4>Localisez votre table !</h4>
+                <div class="map">
+                    <iframe src="https://maps.google.it/maps?q={{ host_table.address }} {{ host_table.zipCode }} {{ host_table.town }}&output=embed"
+                            width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    {#<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d679.4716070806087!2d-0.8763230434664657!3d47.06207816737371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480646a381559aeb%3A0xea21c3e33efa19fc!2sCholet!5e0!3m2!1sen!2sfr!4v1543920043350" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>#}
+                </div>
+            </div>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('host_table_index') }}">
+                    <button>back to list</button>
+                </a>
+                <a href="{{ path('host_table_edit', {'id': host_table.id}) }}">
+                    <button>edit</button>
+                </a>
+
+                {{ include('host_table/_delete_form.html.twig') }}
+            {% endif %}
+        </div>
+
+    </div>
+
+    {#<table class="table">#}
+    {#<h1>HostTable</h1>#}
+    {#<tbody>#}
+    {#<tr>#}
+    {#<th>Id</th>#}
+    {#<td>{{ host_table.id }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Name</th>#}
+    {#<td>{{ host_table.name }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Adress</th>#}
+    {#<td>{{ host_table.adress }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Address2</th>#}
+    {#<td>{{ host_table.address2 }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Town</th>#}
+    {#<td>{{ host_table.town }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>ZipCode</th>#}
+    {#<td>{{ host_table.zipCode }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Description</th>#}
+    {#<td>{{ host_table.description }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Menu</th>#}
+    {#<td>{{ host_table.menu }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>PriceRange</th>#}
+    {#<td>{{ host_table.priceRange }}</td>#}
+    {#</tr>#}
+    {#</tbody>#}
+    {#</table>#}
+
+
+{% endblock %}

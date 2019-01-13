@@ -1,0 +1,103 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %} {{ controller_name }} {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="page">
+
+    <!--HEADER-->
+    <div class="header">
+        <img src="{{ asset('images/logo.jpg') }}" alt="logo" height="120px">
+        <h1>Administrateur</h1>
+    </div>
+
+</div>
+
+
+<div class="fond">
+    <h4>Nombre de User: 15</h4>
+    <h4>Nombre de Table: 24</h4>
+    <h4>Nombre de Réservation: 8</h4>
+</div>
+
+
+<h3>USER Table</h3>
+
+
+<table class="table-contener">
+    <thead>
+    <tr>
+        <th class="text-left">Nom</th>
+        <th class="text-left">Email</th>
+        <th class="text-left">Tel</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+    {% for user in tablesUser %}
+        <tr>
+            <td class="text-left">{{ user.username }}</td>
+            <td class="text-left">{{ user.Email }}</td>
+            <td class="text-left">{{ user.Telephone }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<hr color="yellow">
+
+<h3>INFO Table</h3>
+
+<table class="table-two">
+    <thead>
+    <tr>
+        <th class="text-left">Nom</th>
+        <th class="text-left">Adress</th>
+        <th class="text-left">ZipCode</th>
+        <th class="text-left">Description</th>
+        <th class="text-left">Prix</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+    {% for table in tables %}
+        <tr>
+            <td class="text-left">{{ table.name }}</td>
+            <td class="text-left">{{ table.Address }}</td>
+            <td class="text-left">{{ table.ZipCode }}</td>
+            <td class="text-left">{{ table.description }}</td>
+            <td class="text-left">{{ table.PriceRange }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<hr color="yellow">
+
+<h3>RESERVATION Table</h3>
+
+<table class="table-three">
+    <thead>
+    <tr>
+        <th class="text-left">Creation</th>
+        <th class="text-left">Nom table</th>
+        <th class="text-left">Email</th>
+        <th class="text-left">Adresse</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+    {% for table in tables %}
+        <tr>
+            <td class="text-left"></td>
+            <td class="text-left"></td>
+            <td class="text-left"></td>
+            <td class="text-left"></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

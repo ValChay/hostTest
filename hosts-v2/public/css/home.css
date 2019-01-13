@@ -1,0 +1,197 @@
+/* pour fixer le footer (à mettre dans les fichiers racines*/
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 60px; /* l'ensemble doit être le même que la taille du footer */
+}
+
+
+/* HEADER */
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 70%;
+    margin: 10px;
+}
+
+h1{
+    color: rgb(36, 37, 37);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px grey;
+}
+
+.titre{
+    color:white;
+}
+
+a{
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+}
+
+/*SLIDE*/
+
+.fauxslide{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    background-color: gray;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+}
+
+p{
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/* SIDEBAR */
+
+.choicebar{
+    width: 25%;
+    display: flex;
+    background-color:white;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title{
+    font-weight: bold;
+    font-size: large;
+    letter-spacing: 2px;
+    opacity: 0.2;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    background-color: lightgrey;
+}
+
+/* SEARCH */
+
+.contener{
+    display: flex;
+    flex-direction: row;
+}
+
+h3{
+    text-align: center;
+}
+.recherche{
+    display: flex;
+    flex-flow: column wrap ;
+    align-items: center;
+    background-color: #eeeeee;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dddddd;
+    padding: 53px;
+    margin: 47px;
+    width: 16%;
+    height: 100%;
+    text-align: center;
+}
+
+.filtre-ville{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+    padding: 5px;
+}
+
+.filtre-prix{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+    padding: 5px;
+}
+
+.bouton {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 9px 18px;
+    border: 2px solid darkslategrey;
+    background-color: darkslategrey;
+    color: white;
+    height: 30px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+
+.bouton2{
+    display:flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    padding: 9px 18px;
+    border: 1px solid gray();
+    background-color: white;
+    color: rgb(54, 52, 52);
+    height: 30px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+
+
+/* RESULT */
+
+.result{
+    display: flex;
+    flex-wrap: wrap;
+    height: 590px;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+.table{
+    display: flex;
+    flex-direction: row;
+}
+
+h2{
+    letter-spacing: 2px;
+    font-weight: lighter;
+    color: rgb(44, 44, 43);
+}
+
+.article{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 30%;
+    height: 550px;
+    background-color: rgb(245, 243, 243);
+    border: 2px solid grey;
+    justify-content: center;
+}
+
